@@ -1,6 +1,6 @@
 resource "google_sql_database_instance" "mysql_instance" {
     name    =var.instance_name
-    database_version = "mysql_8_0"
+    database_version = var.database_version
     region = var.region
     project = var.project_id
 
