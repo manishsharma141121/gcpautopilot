@@ -1,8 +1,8 @@
 resource "google_sql_database_instance" "mysql_instance" {
-    name    =""
+    name    =var.instance_name
     database_version = "mysql_8_0"
-    region = ""
-    project = ""
+    region = var.region
+    project = var.project_id
 
     settings {
       tier = "db-f1-micro"
