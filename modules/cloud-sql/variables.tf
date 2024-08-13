@@ -23,3 +23,40 @@ variable "psc_target_service" {
   description = "The target service for PSC, such as a Google API or managed service"
   type        = string
 }
+
+variable "db_password" {
+  type = string
+  description = "database password"
+}
+
+#Variable
+
+variable "db_instance_name" {
+  description = "The name of the Cloud SQL instance"
+  type        = string
+  default     = "my-sql-instance"
+}
+
+variable "db_master_username" {
+  description = "Master username for the database"
+  type        = string
+  default     = "masteruser"
+}
+
+variable "db_master_password" {
+  description = "Master password for the database"
+  type        = string
+  sensitive   = true
+}
+
+variable "gcp_project" {
+  description = "The GCP project ID"
+  type        = string
+}
+
+variable "gcp_region" {
+  description = "The GCP region"
+  type        = string
+  default     = "us-central1"
+}
+
