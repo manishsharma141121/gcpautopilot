@@ -10,3 +10,7 @@ variable "region" {
   type = string
   description = "region of DB database"
 }
+variable "project_id" {
+    type = string
+    description = "Name of project ID"
+}
