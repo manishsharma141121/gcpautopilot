@@ -1,14 +1,39 @@
-resource "google_sql_database_instance" "mysql_instance" {
-    name    =var.instance_name
-    database_version = var.database_version
-    region = var.region
-    project = var.project_id
+#This setup will create a Cloud SQL instance with the master username and password stored securely in GCP Secret Manager.
+#Create the Secret in GCP Secret Manager
 
-    settings {
-      tier = "db-f1-micro"
-    }
-  
+resource "google_secret_manager_secret" "db_master_secret" {
+  secret_id = "db-master-credentials"
+  replication {
+    automatic = true
+  }
 }
+
+resource "google_secret_manager_secret_version" "db_master_secret_version" {
+  secret      = google_secret_manager_secret.db_master_secret.id
+  secret_data = var.db_master_password
+}
+
+#Create the Cloud SQL Instance
+
+resource "google_sql_database_instance" "mydb" {
+  name             = var.db_instance_name
+  database_version = "MYSQL_8_0"
+  region           = var.gcp_region
+
+  settings {
+    tier = "db-f1-micro"
+    backup_configuration {
+      enabled = true
+    }
+  }
+}
+
+resource "google_sql_user" "db_master_user" {
+  name     = var.db_master_username
+  instance = google_sql_database_instance.mydb.name
+  password = var.db_master_password
+}
+
 
 # module "private_service_connect" {
 #   source                     = "terraform-google-modules/network/google//modules/private-service-connect"
