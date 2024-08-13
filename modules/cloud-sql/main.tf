@@ -10,14 +10,14 @@ resource "google_sql_database_instance" "mysql_instance" {
   
 }
 
-module "private_service_connect" {
-  source                     = "terraform-google-modules/network/google//modules/private-service-connect"
+# module "private_service_connect" {
+#   source                     = "terraform-google-modules/network/google//modules/private-service-connect"
 
-  project_id                 = "<PROJECT_ID>"
-  network_self_link          = "<NETWORK_SELF_LINK>"
-  private_service_connect_ip = "10.3.0.5"
-  forwarding_rule_target     = "all-apis"
-}
+#   project_id                 = "<PROJECT_ID>"
+#   network_self_link          = "<NETWORK_SELF_LINK>"
+#   private_service_connect_ip = "10.3.0.5"
+#   forwarding_rule_target     = "all-apis"
+# }
 
 #Private Service Access
 
