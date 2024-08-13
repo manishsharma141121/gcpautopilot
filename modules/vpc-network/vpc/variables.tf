@@ -3,7 +3,7 @@ variable "project_id" {
 }
 
 variable "network_name" {
-  description = "Name of the network beinf created"
+  description = "Name of the network being created"
 }
 
 variable "routing_mode" {
