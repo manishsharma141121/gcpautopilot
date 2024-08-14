@@ -48,3 +48,48 @@ variable "namespaces" {
     }
   }
 }
+
+variable "databases" {
+  type = map(string)
+    default = {
+    database1= {
+      name = string
+    }
+    database2 = {
+      name = string
+    }
+    database3 = {
+      name = string
+    }
+  }
+}
+
+variable "user_name" {
+  type = map(string)
+    default = {
+    user_name1= {
+      name = string
+    }
+    user_name2 = {
+      name = string
+    }
+    user_name3 = {
+      name = string
+    }
+  }
+}
+
+variable "SecretID" {
+  type = map(string)
+    default = {
+    SecretID1= {
+      name = string
+    }
+    SecretID2 = {
+      name = string
+    }
+    SecretID3 = {
+      name = string
+    }
+  }
+}
