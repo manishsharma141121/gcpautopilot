@@ -34,6 +34,11 @@ resource "google_sql_user" "db_master_user" {
   password = var.db_master_password
 }
 
+# Enable the necessary APIs
+resource "google_project_service" "private_service_connect" {
+  project = "your-project-id"
+  service = "servicenetworking.googleapis.com"
+}
 
 # module "private_service_connect" {
 #   source                     = "terraform-google-modules/network/google//modules/private-service-connect"
@@ -46,15 +51,15 @@ resource "google_sql_user" "db_master_user" {
 
 #Private Service Access
 
-resource "google_compute_global_address" "private_service_access" {
-  provider = google-beta
-  name     = "private-service-access"
-  purpose  = "VPC_PEERING"
-  address_type = "INTERNAL"
-  prefix_length = 16
-  network       = google_compute_network.vpc.self_link
-  project       = var.project_id
-}
+# resource "google_compute_global_address" "private_service_access" {
+#   provider = google-beta
+#   name     = "private-service-access"
+#   purpose  = "VPC_PEERING"
+#   address_type = "INTERNAL"
+#   prefix_length = 16
+#   network       = google_compute_network.vpc.self_link
+#   project       = var.project_id
+# }
 
 #Private Service Connect Endpoint
 
