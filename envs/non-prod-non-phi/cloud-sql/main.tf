@@ -1,5 +1,5 @@
 module "private_service_connect" {
-  source = "../../../modules/cloud-sql"
+  source = "../../modules/cloud-sql"
 
   project_id        = var.project #"your-gcp-project-id"
   vpc_name          = var.vpc_name #"your-vpc-name"
