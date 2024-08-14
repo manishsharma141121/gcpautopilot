@@ -1,4 +1,4 @@
-#This setup will create a Cloud SQL instance with the master username and password stored securely in GCP Secret Manager.
+#This setup will create a Cloud SQL instance, databases with the master username and password stored securely in GCP Secret Manager.
 #Create Cloud Sql Instance for each namespace and each Database and store secrets respectively
 #Create the Secret in GCP Secret Manager
 
@@ -27,6 +27,12 @@ resource "google_sql_database_instance" "instance_name" {
       enabled = true
     }
   }
+}
+#Create database using for_each
+resource "google_sql_database" "databases" {
+  name = var.databases
+  instance = google_sql_database_instance.instance_name
+  
 }
 
 resource "google_sql_user" "db_master_user" {
