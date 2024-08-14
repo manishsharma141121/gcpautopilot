@@ -5,7 +5,7 @@
 resource "google_secret_manager_secret" "db_master_secret" {
   secret_id = var.db_master_password
   replication {
-    automatic = true
+    #automatic = true
   }
 }
 
