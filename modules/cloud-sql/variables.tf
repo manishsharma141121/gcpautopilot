@@ -36,6 +36,11 @@ variable "db_instance_name" {
   type        = string
 }
 
+variable "databases" {
+  type = string
+  description = "Set of database to create within each cloud sql instance"
+}
+
 variable "db_master_username" {
   description = "Master username for the database"
   type        = string

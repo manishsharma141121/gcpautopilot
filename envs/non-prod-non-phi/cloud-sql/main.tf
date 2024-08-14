@@ -27,5 +27,12 @@ module "google_sql_user" {
   name     = var.db_master_username
 
 }
-
+module "google_sql_database" {
+    source = "../../modules/cloud-sql"
+  for_each =      var.instance_name
+  project_id        = var.project #"your-gcp-project-id"
+  region            = var.region #"us-central1"
+  db_instance_name = lookup(each.value, "instance_name", null)
+  psc_target_service = var.psc_target_service #"your-target-service"
+}
 
