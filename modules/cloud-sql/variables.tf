@@ -34,7 +34,6 @@ variable "db_password" {
 variable "db_instance_name" {
   description = "The name of the Cloud SQL instance"
   type        = string
-  default     = "my-sql-instance"
 }
 
 variable "db_master_username" {
@@ -58,5 +57,14 @@ variable "gcp_region" {
   description = "The GCP region"
   type        = string
   default     = "us-central1"
+}
+
+variable "db_master_secret_version" {
+  type = string
+}
+
+variable "namespaces" {
+  type = map(string)
+  description = "Name of cluster namespace"
 }
 
