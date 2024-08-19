@@ -3,30 +3,21 @@ variable "project_id" {
   type        = string
 }
 
-variable "vpc_name" {
-  description = "The name of the VPC where the PSC endpoint will be created"
-  type        = string
-}
-
-variable "subnet_name" {
-  description = "The name of the subnet where the PSC endpoint will be created"
-  type        = string
-}
-
 variable "region" {
   description = "The region where resources will be created"
   type        = string
   default     = "us-central1"
 }
 
-variable "psc_target_service" {
-  description = "The target service for PSC, such as a Google API or managed service"
-  type        = string
-}
-
 variable "db_password" {
   type = string
   description = "database password"
+}
+
+variable "database_version" {
+  type=string
+  description = "The version of the database created"
+  
 }
 
 #Variable
@@ -68,8 +59,4 @@ variable "db_master_secret_version" {
   type = string
 }
 
-variable "namespaces" {
-  type = map(string)
-  description = "Name of cluster namespace"
-}
 
