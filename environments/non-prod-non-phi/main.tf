@@ -17,30 +17,11 @@ provider "google" {
 }
 # Terraform GCP Cloud SQL Module. This Terraform module creates a Cloud SQL instance on Google Cloud Platform.
 
-module "google_sql_database_instance" {
+module "cloud_sql" {
   source            = "../modules/cloud-sql"
   project_id        = var.project #"your-gcp-project-id"
   region            = var.region #"us-central1"
-  instance_name     =var.instance_name
-}
- 
-module "google_secret_manager_secret" {
-  source            = "../modules/cloud-sql"
-  for_each          = var.SecretID #local terrafrom variable
-  project_id        = var.project #"your-gcp-project-id"
-  region            = var.region #"us-central1" 
-}
-module "google_sql_user" {
-  source            = "../modules/cloud-sql"
-  for_each          = var.user_name
-  project_id        = var.project #"your-gcp-project-id"
-  region            = var.region #"us-central1"
-}
-module "google_sql_database" {
-  source            = "../modules/cloud-sql"
-  for_each          = var.databases
-  project_id        = var.project #"your-gcp-project-id"
-  region            = var.region #"us-central1"
+  instance_name     = var.instance_name
 }
 
 module "namespace" {
