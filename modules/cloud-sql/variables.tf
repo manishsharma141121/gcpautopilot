@@ -44,6 +44,11 @@ variable "db_master_password" {
   sensitive   = true
 }
 
+variable "name_prefix" {
+  description = "Prefix to use for resource names. A random suffix will be appended."
+  type        = string
+}
+
 variable "gcp_project" {
   description = "The GCP project ID"
   type        = string
@@ -59,4 +64,9 @@ variable "db_master_secret_version" {
   type = string
 }
 
+variable "name_override" {
+  description = "Override the generated name with a custom name. If null, the generated name will be used."
+  type        = string
+  default     = null
+}
 
