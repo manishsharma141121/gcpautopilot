@@ -22,6 +22,10 @@ module "cloud_sql" {
   project_id        = var.project #"your-gcp-project-id"
   region            = var.region #"us-central1"
   instance_name     = var.instance_name
+  database_version  = var.database_version
+  instance_tier     = var.instance_tier
+  databases         =var.databases
+  users             =var.db_users
 }
 
 module "namespace" {
