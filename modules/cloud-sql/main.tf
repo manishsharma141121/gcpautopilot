@@ -43,6 +43,11 @@ resource "google_sql_user" "db_master_user" {
   password = var.db_master_password
 }
 
+resource "random_password" "db_password" {
+  length = 16
+  special = true
+}
+
 resource "google_secret_manager_secret" "db_master_secret" {
   for_each = kubernetes_namespace.namespace
   metadata {
