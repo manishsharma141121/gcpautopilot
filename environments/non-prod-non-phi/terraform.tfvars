@@ -1,5 +1,5 @@
 # GCP Project and Region
-project_id = "uhg-poc-432004"
+project_id = "test-project123"
 region     = "us-central1"
 
 # Kubernetes Namespaces and Ingress Configuration
